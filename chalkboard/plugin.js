@@ -64,7 +64,7 @@ function scriptPath() {
 	if ( document.currentScript ) {
 		src = document.currentScript.src;
 	} else {
-		var sel = document.querySelector( 'script[src$="/chalkboard/plugin.js"]' )
+		var sel = document.querySelector( 'script[src$="/chalkboard/plugin.js"]' );
 		if ( sel ) {
 			src = sel.src;
 		}
@@ -102,17 +102,14 @@ const initChalkboard = function ( Reveal ) {
 		src: path + 'img/sponge.png',
 		radius: 20
 	};
-	var boardmarkers = [ {
-			color: 'rgba(100,100,100,1)',
-			cursor: 'url(' + path + 'img/boardmarker-black.png), auto'
-		},
-		{
-			color: 'rgba(30,144,255, 1)',
-			cursor: 'url(' + path + 'img/boardmarker-blue.png), auto'
-		},
+	var boardmarkers = [
 		{
 			color: 'rgba(220,20,60,1)',
 			cursor: 'url(' + path + 'img/boardmarker-red.png), auto'
+		},
+    {
+			color: 'rgba(30,144,255, 1)',
+			cursor: 'url(' + path + 'img/boardmarker-blue.png), auto'
 		},
 		{
 			color: 'rgba(50,205,50,1)',
@@ -131,17 +128,14 @@ const initChalkboard = function ( Reveal ) {
 			cursor: 'url(' + path + 'img/boardmarker-yellow.png), auto'
 		}
 	];
-	var chalks = [ {
-			color: 'rgba(255,255,255,0.5)',
-			cursor: 'url(' + path + 'img/chalk-white.png), auto'
+	var chalks = [
+		{
+			color: 'rgba(237, 20, 28, 0.5)',
+			cursor: 'url(' + path + 'img/chalk-red.png), auto'
 		},
 		{
 			color: 'rgba(96, 154, 244, 0.5)',
 			cursor: 'url(' + path + 'img/chalk-blue.png), auto'
-		},
-		{
-			color: 'rgba(237, 20, 28, 0.5)',
-			cursor: 'url(' + path + 'img/chalk-red.png), auto'
 		},
 		{
 			color: 'rgba(20, 237, 28, 0.5)',
@@ -243,22 +237,22 @@ const initChalkboard = function ( Reveal ) {
 		if ( config.theme ) theme = config.theme;
 		switch ( theme ) {
 		case 'whiteboard':
-			background = [ 'rgba(127,127,127,.1)', path + 'img/whiteboard.png' ];
+			background = [ 'rgba(127,127,127,0.0)', path + 'img/whiteboard.png' ];
 			draw = [ drawWithBoardmarker, drawWithBoardmarker ];
 			pens = [ boardmarkers, boardmarkers ];
 			grid = {
-				color: 'rgb(127,127,255,0.1)',
+				color: 'rgb(127,127,255,0.0)',
 				distance: 40,
 				width: 2
 			};
 			break;
 		case 'chalkboard':
 		default:
-			background = [ 'rgba(127,127,127,.1)', path + 'img/blackboard.png' ];
+			background = [ 'rgba(127,127,127,0.0)', path + 'img/blackboard.png' ];
 			draw = [ drawWithBoardmarker, drawWithChalk ];
 			pens = [ boardmarkers, chalks ];
 			grid = {
-				color: 'rgb(50,50,10,0.5)',
+				color: 'rgb(50,50,10,0.0)',
 				distance: 80,
 				width: 2
 			};
@@ -473,7 +467,7 @@ const initChalkboard = function ( Reveal ) {
 			if ( boardHandle ) {
 				var handle = document.createElement( 'div' );
 				handle.classList.add( 'boardhandle' );
-				handle.innerHTML = '<ul><li><a id="previousboard" href="#" title="Previous board"><i class="fas fa-chevron-up"></i></a></li><li><a id="nextboard" href="#" title="Next board"><i class="fas fa-chevron-down"></i></a></li></ul>';
+				handle.innerHTML = '<ul><li><a id="previousboard" href="#" title="Previous board"><i class="fas fa-chevron-up" style="color: #FFD43B;"></i></a></li><li><a id="nextboard" href="#" title="Next board"><i class="fas fa-chevron-down" style="color: #FFD43B;"></i></a></li></ul>';
 				handle.querySelector( '#previousboard' ).addEventListener( 'click', function ( e ) {
 					e.preventDefault();
 					switchBoard( board - 1 );
